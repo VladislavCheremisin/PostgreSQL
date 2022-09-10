@@ -1,0 +1,112 @@
+SELECT * FROM genres;
+---------------------
+
+
+postgres=# create database mydb;
+
+postgres=# create user myuser password 'secret';
+
+postgres=# grant all privileges on database mydb to myuser;
+
+id integer primary key generated always as identity
+
+CREATE TABLE genres (
+    id INT  primary key GENERATED ALWAYS AS IDENTITY,
+    genre VARCHAR(100)
+);
+
+CREATE TABLE authors (
+    id INT primary key GENERATED ALWAYS AS IDENTITY,
+    author VARCHAR(100)
+);
+
+CREATE TABLE characters (
+    id INT primary key GENERATED ALWAYS AS IDENTITY,
+    character VARCHAR(10)
+);
+
+CREATE TABLE users (
+    id INT primary key GENERATED ALWAYS AS IDENTITY,
+    firstName VARCHAR(30),
+    lastName VARCHAR(30),
+    email VARCHAR(30),
+    password VARCHAR(30),
+    age INT,
+    loading_books INTEGER,
+    registration_date DATE DEFAULT CURRENT_DATE,
+    character_id INT NOT NULL REFERENCES characters(id)
+);
+
+CREATE TABLE books (
+    id INT primary key GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR(100),
+    description VARCHAR(200),
+    loading_date DATE DEFAULT CURRENT_DATE,
+    author_id INT NOT NULL REFERENCES authors(id),
+    genre_id INT NOT NULL REFERENCES genres(id),
+    loading_id INT NOT NULL REFERENCES users(id)
+);
+
+
+
+Insert data to genres
+
+INSERT INTO genres (genre)
+VALUES ('fantasy');
+INSERT INTO genres (genre)
+VALUES
+('comedy'),
+('horror');
+
+
+
+
+postgres=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+-----------+----------+----------+------------+------------+-----------------------
+ mydb      | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =Tc/postgres         +
+           |          |          |            |            | postgres=CTc/postgres+
+           |          |          |            |            | myuser=CTc/postgres
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+(4 rows)
+
+
+
+mydb=> \d
+
+               List of relations
+ Schema |       Name        |   Type   | Owner
+--------+-------------------+----------+--------
+ public | authors           | table    | myuser
+ public | authors_id_seq    | sequence | myuser
+ public | books             | table    | myuser
+ public | books_id_seq      | sequence | myuser
+ public | characters        | table    | myuser
+ public | characters_id_seq | sequence | myuser
+ public | genres            | table    | myuser
+ public | genres_id_seq     | sequence | myuser
+ public | users             | table    | myuser
+ public | users_id_seq      | sequence | myuser
+(10 rows)
+
+
+
+SELECT id, genre FROM genres;
+
+ id |   genre
+----+-----------
+  1 | thrillers
+  2 | fantasy
+  3 | comedy
+  4 | horror
+(4 rows)
+
+
+
+
+
