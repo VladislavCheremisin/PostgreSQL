@@ -1,0 +1,19 @@
+Схема  |          Имя          |        Тип         | Владелец |  Хранение  | Метод доступа |   Размер   | Описание
+--------+-----------------------+--------------------+----------+------------+---------------+------------+----------
+ public | authors               | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | authors_id_seq        | последовательность | gopher   | постоянное |               | 8192 bytes |
+ public | books                 | таблица            | gopher   | постоянное | heap          | 16 kB      |
+ public | books_authors         | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | books_genres          | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | books_id_seq          | последовательность | gopher   | постоянное |               | 8192 bytes |
+ public | characters            | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | characters_id_seq     | последовательность | gopher   | постоянное |               | 8192 bytes |
+ public | genres                | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | genres_id_seq         | последовательность | gopher   | постоянное |               | 8192 bytes |
+ public | users                 | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | users_id_seq          | последовательность | gopher   | постоянное |               | 8192 bytes |
+ public | users_password        | таблица            | gopher   | постоянное | heap          | 8192 bytes |
+ public | users_password_id_seq | последовательность | gopher   | постоянное |               | 8192 bytes |
+
+
+
