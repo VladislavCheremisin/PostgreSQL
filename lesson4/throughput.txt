@@ -1,0 +1,228 @@
+
+vlad@vlad-LIFEBOOK:~$ lscpu
+
+Архитектура:                     x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Порядок байт:                    Little Endian
+Address sizes:                   36 bits physical, 48 bits virtual
+CPU(s):                          4
+On-line CPU(s) list:             0-3
+Потоков на ядро:                 2
+Ядер на сокет:                   2
+Сокетов:                         1
+NUMA node(s):                    1
+ID прроизводителя:               GenuineIntel
+Семейство ЦПУ:                   6
+Модель:                          58
+Имя модели:                      Intel(R) Core(TM) i5-3320M CPU @ 2.60GHz
+Степпинг:                        9
+CPU МГц:                         2384.174
+CPU max MHz:                     3300,0000
+CPU min MHz:                     1200,0000
+BogoMIPS:                        5188.61
+Виртуализация:                   VT-x
+L1d cache:                       64 KiB
+L1i cache:                       64 KiB
+L2 cache:                        512 KiB
+L3 cache:                        3 MiB
+NUMA node0 CPU(s):               0-3
+Vulnerability Itlb multihit:     KVM: Mitigation: VMX disabled
+Vulnerability L1tf:              Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable
+Vulnerability Mds:               Mitigation; Clear CPU buffers; SMT vulnerable
+Vulnerability Meltdown:          Mitigation; PTI
+Vulnerability Mmio stale data:   Not affected
+Vulnerability Retbleed:          Not affected
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Retpolines, IBPB conditional, IBRS_FW, STIBP conditional, RSB filling
+Vulnerability Srbds:             Vulnerable: No microcode
+Vulnerability Tsx async abort:   Not affected
+
+
+vlad@vlad-LIFEBOOK:~$ cat /proc/meminfo
+MemTotal:        7997000 kB
+MemFree:          290236 kB
+MemAvailable:    1028200 kB
+Buffers:           66172 kB
+Cached:          1498220 kB
+SwapCached:       106528 kB
+Active:          3723812 kB
+Inactive:        3362448 kB
+Active(anon):    3239820 kB
+Inactive(anon):  2958940 kB
+Active(file):     483992 kB
+Inactive(file):   403508 kB
+Unevictable:       83524 kB
+Mlocked:             128 kB
+SwapTotal:       8007676 kB
+SwapFree:        6222824 kB
+Dirty:             12196 kB
+Writeback:             0 kB
+AnonPages:       5557548 kB
+Mapped:           492820 kB
+Shmem:            680556 kB
+KReclaimable:     138560 kB
+Slab:             304768 kB
+SReclaimable:     138560 kB
+SUnreclaim:       166208 kB
+KernelStack:       21856 kB
+PageTables:        77168 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    12006176 kB
+Committed_AS:   20080348 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       61988 kB
+VmallocChunk:          0 kB
+Percpu:             8768 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      467892 kB
+DirectMap2M:     7778304 kB
+
+vlad@vlad-LIFEBOOK:~$ sudo dmidecode -t baseboard
+[sudo] пароль для vlad:
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 2.6 present.
+
+Handle 0x000D, DMI type 2, 15 bytes
+Base Board Information
+	Manufacturer: FUJITSU
+	Product Name: FJNB23F
+	Version: L3
+	Serial Number: D5 1OGK
+	Asset Tag:
+	Features:
+		Board is a hosting board
+	Location In Chassis:
+	Chassis Handle: 0x0000
+	Type: Motherboard
+	Contained Object Handles: 0
+
+
+vlad@vlad-LIFEBOOK:~$ df -h
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+udev             3,8G            0  3,8G            0% /dev
+tmpfs            781M         3,5M  778M            1% /run
+/dev/sda5         28G          19G  7,6G           71% /
+tmpfs            3,9G         268M  3,6G            7% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+tmpfs            3,9G            0  3,9G            0% /sys/fs/cgroup
+/dev/loop0       128K         128K     0          100% /snap/bare/5
+/dev/loop1        56M          56M     0          100% /snap/core18/2560
+/dev/loop2        56M          56M     0          100% /snap/core18/2566
+/dev/loop3        62M          62M     0          100% /snap/core20/1611
+/dev/loop4        64M          64M     0          100% /snap/core20/1623
+/dev/loop5       219M         219M     0          100% /snap/gnome-3-34-1804/72
+/dev/loop6       219M         219M     0          100% /snap/gnome-3-34-1804/77
+/dev/loop7       401M         401M     0          100% /snap/gnome-3-38-2004/112
+/dev/loop8       347M         347M     0          100% /snap/gnome-3-38-2004/115
+/dev/loop9       100M         100M     0          100% /snap/go/9952
+/dev/loop11      685M         685M     0          100% /snap/goland/197
+/dev/loop10      100M         100M     0          100% /snap/go/9848
+/dev/loop12      686M         686M     0          100% /snap/goland/198
+/dev/loop13       82M          82M     0          100% /snap/gtk-common-themes/1534
+/dev/loop14       92M          92M     0          100% /snap/gtk-common-themes/1535
+/dev/loop15      6,2M         6,2M     0          100% /snap/notepad-plus-plus/374
+/dev/loop16       55M          55M     0          100% /snap/snap-store/558
+/dev/loop17       46M          46M     0          100% /snap/snap-store/592
+/dev/loop18       47M          47M     0          100% /snap/snapd/16292
+/dev/loop19       48M          48M     0          100% /snap/snapd/16778
+/dev/loop20      437M         437M     0          100% /snap/wine-platform-7-devel-core20/18
+/dev/loop21      464M         464M     0          100% /snap/wine-platform-runtime-core20/37
+/dev/sdb5         58G          54G  4,0G           94% /windowsF
+/dev/sdb1        176G         161G   16G           92% /windowsD
+/dev/sda7         25G          17G  6,4G           73% /home
+/dev/sda3         96M          31M   66M           32% /boot/efi
+tmpfs            781M          68K  781M            1% /run/user/1000
+/dev/loop22      464M         464M     0          100% /snap/wine-platform-runtime-core20/38
+
+##############################################################################################
+request
+
+SELECT authors.author, COUNT(authors.author) AS books
+FROM books_authors, books, authors
+WHERE books_authors.book_id = books.id AND books_authors.author_id = authors.id
+GROUP BY authors.author;
+
+cfg.MaxConns = 30
+cfg.MinConns = 30
+
+start attack
+duration: 10.11305801s
+threads: 1000
+queries: 96325
+QPS: 9632
+
+
+cfg.MaxConns = 1
+cfg.MinConns = 1
+
+start attack
+duration: 10.33156825s
+threads: 1000
+queries: 30836
+QPS: 3083
+--------------------
+request
+SELECT books.title, authors.author
+FROM books_authors, books, authors
+WHERE books_authors.book_id = books.id AND books_authors.author_id = authors.id;
+
+cfg.MaxConns = 1
+cfg.MinConns = 1
+
+start attack
+duration: 10.290488969s
+threads: 1000
+queries: 36211
+QPS: 3621
+
+
+cfg.MaxConns = 30
+cfg.MinConns = 30
+
+start attack
+duration: 10.087497402s
+threads: 1000
+queries: 110990
+QPS: 11099
+------------------------
+request
+SELECT email, firstName, lastName
+FROM users
+WHERE email LIKE 'test%'
+ORDER BY firstName ASC;
+
+cfg.MaxConns = 30
+cfg.MinConns = 30
+
+start attack
+duration: 10.05835824s
+threads: 1000
+queries: 133314
+QPS: 13331
+
+
+cfg.MaxConns = 1
+cfg.MinConns = 1
+
+start attack
+duration: 10.255322257s
+threads: 1000
+queries: 40623
+QPS: 4062
+
+
