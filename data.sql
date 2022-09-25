@@ -5,26 +5,26 @@ INSERT INTO genres (genre)
 VALUES
 ('fantasy'),
 ('comedy'),
-('horror')
+('horror');
 
 -- authors
 INSERT INTO authors (author)
 VALUES
 ('Pushkin'),
 ('Dostoevskij'),
-('Gogol')
+('Gogol');
 
 -- characters
 INSERT INTO characters (character)
 VALUES
 ('Admin'),
-('User')
+('User');
 
 -- users_password
 INSERT INTO users_password (password)
 VALUES
 ('1234556'),
-('7654321')
+('7654321');
 
 -- users
 INSERT INTO users (firstName, lastName, email, loading_books, character_id)

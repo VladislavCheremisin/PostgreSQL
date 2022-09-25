@@ -1,0 +1,70 @@
+SELECT pg_relation_size('authors_author_idx');
+ pg_relation_size
+------------------
+            16384
+
+SELECT pg_relation_size('users_firstName_idx');
+ pg_relation_size
+------------------
+            16384
+
+SELECT pg_relation_size('users_email_idx');
+ pg_relation_size
+------------------
+            16384
+
+
+
+--with Indexes
+EXPLAIN ANALYZE SELECT author FROM authors;
+                                            QUERY PLAN
+---------------------------------------------------------------------------------------------------
+ Seq Scan on authors  (cost=0.00..1.03 rows=3 width=218) (actual time=0.008..0.009 rows=3 loops=1)
+ Planning Time: 0.222 ms
+ Execution Time: 0.030 ms
+
+
+
+drop index authors_author_idx;
+EXPLAIN ANALYZE SELECT author FROM authors;
+                                            QUERY PLAN
+---------------------------------------------------------------------------------------------------
+ Seq Scan on authors  (cost=0.00..1.03 rows=3 width=218) (actual time=0.009..0.012 rows=3 loops=1)
+ Planning Time: 0.148 ms
+ Execution Time: 0.029 ms
+
+
+--with Indexes
+EXPLAIN ANALYZE SELECT firstName FROM users;
+                                           QUERY PLAN
+------------------------------------------------------------------------------------------------
+ Seq Scan on users  (cost=0.00..1.02 rows=2 width=78) (actual time=0.012..0.014 rows=2 loops=1)
+ Planning Time: 23.528 ms
+ Execution Time: 0.033 ms
+
+drop index users_firstName_idx;
+                                           QUERY PLAN
+------------------------------------------------------------------------------------------------
+ Seq Scan on users  (cost=0.00..1.02 rows=2 width=78) (actual time=0.010..0.012 rows=2 loops=1)
+ Planning Time: 0.184 ms
+ Execution Time: 0.037 ms
+(3 rows)
+
+
+
+--with Indexes
+EXPLAIN ANALYZE SELECT email FROM users;
+                                           QUERY PLAN
+------------------------------------------------------------------------------------------------
+ Seq Scan on users  (cost=0.00..1.02 rows=2 width=78) (actual time=0.011..0.012 rows=2 loops=1)
+ Planning Time: 0.064 ms
+ Execution Time: 0.029 ms
+(3 rows)
+
+drop index users_email_idx;
+                                           QUERY PLAN
+------------------------------------------------------------------------------------------------
+ Seq Scan on users  (cost=0.00..1.02 rows=2 width=78) (actual time=0.011..0.012 rows=2 loops=1)
+ Planning Time: 0.177 ms
+ Execution Time: 0.032 ms
+(3 rows)
