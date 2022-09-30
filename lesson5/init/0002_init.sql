@@ -1,26 +1,31 @@
+\c gopher_library
+
+SET ROLE gopher;
+
 BEGIN;
 
+DROP TABLE IF EXISTS genres CASCADE;
 CREATE TABLE genres (
                         id INT  primary key GENERATED ALWAYS AS IDENTITY,
                         genre VARCHAR(100)
 );
-
+DROP TABLE IF EXISTS authors CASCADE;
 CREATE TABLE authors (
                          id INT primary key GENERATED ALWAYS AS IDENTITY,
                          author VARCHAR(100)
 );
-
+DROP TABLE IF EXISTS characters CASCADE;
 CREATE TABLE characters (
                             id INT primary key GENERATED ALWAYS AS IDENTITY,
                             character VARCHAR(10)
 );
-
+DROP TABLE IF EXISTS users_password CASCADE;
 CREATE TABLE users_password (
                                 id INT primary key GENERATED ALWAYS AS IDENTITY,
                                 password VARCHAR(30),
                                 CHECK (length(password) > 3)
 );
-
+DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
                        id INT primary key GENERATED ALWAYS AS IDENTITY,
                        firstName VARCHAR(30),
@@ -33,7 +38,7 @@ CREATE TABLE users (
                        CHECK (length(lastName) > 3),
                        CHECK (length(email) > 5)
 );
-
+DROP TABLE IF EXISTS books CASCADE;
 CREATE TABLE books (
                        id INT primary key GENERATED ALWAYS AS IDENTITY,
                        title VARCHAR(200),
@@ -43,12 +48,12 @@ CREATE TABLE books (
                        CHECK (length(title) > 5),
                        CHECK (length(description) > 10)
 );
-
+DROP TABLE IF EXISTS books_authors CASCADE;
 CREATE TABLE books_authors (
                                book_id INT NOT NULL,
                                author_id INT NOT NULL
 );
-
+DROP TABLE IF EXISTS books_genres CASCADE;
 CREATE TABLE books_genres (
                               book_id INT NOT NULL,
                               genre_id INT NOT NULL
