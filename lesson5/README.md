@@ -13,7 +13,7 @@
 Далее после запуска контейнера произвести команду
 migrate -database "postgresql://postgres:P@ssw0rd@localhost:5432/gopher_library?sslmode=disable" -path migrations up 1  
 Произойдет добавление таблиц в нашу БД.  
-------------------------------------------------------------------------------------------
+
 In this project, we can use two options for initializing and filling the database with data.
 
 1 option.
